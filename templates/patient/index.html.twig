@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Patient index{% endblock %}
+
+{% block body %}
+    <h1>Patient index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DocumentType</th>
+                <th>Document</th>
+                <th>FirstName</th>
+                <th>SecondName</th>
+                <th>FirstLastName</th>
+                <th>SecondLastName</th>
+                <th>Birthday</th>
+                <th>Phone</th>
+                <th>SecondPhone</th>
+                <th>Department</th>
+                <th>Municipality</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>BloodGroup</th>
+                <th>Rh</th>
+                <th>ProcessType</th>
+                <th>EntityHealth</th>
+                <th>Regime</th>
+                <th>AppointmentType</th>
+                <th>Service</th>
+                <th>AuthorizationNumber</th>
+                <th>ImagePath</th>
+                <th>PathImageEPS</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for patient in patients %}
+            <tr>
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.documentType }}</td>
+                <td>{{ patient.document }}</td>
+                <td>{{ patient.firstName }}</td>
+                <td>{{ patient.secondName }}</td>
+                <td>{{ patient.firstLastName }}</td>
+                <td>{{ patient.secondLastName }}</td>
+                <td>{{ patient.birthday ? patient.birthday|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ patient.phone }}</td>
+                <td>{{ patient.secondPhone }}</td>
+                <td>{{ patient.department }}</td>
+                <td>{{ patient.municipality }}</td>
+                <td>{{ patient.address }}</td>
+                <td>{{ patient.email }}</td>
+                <td>{{ patient.gender }}</td>
+                <td>{{ patient.bloodGroup }}</td>
+                <td>{{ patient.rh }}</td>
+                <td>{{ patient.processType }}</td>
+                <td>{{ patient.entityHealth }}</td>
+                <td>{{ patient.regime }}</td>
+                <td>{{ patient.appointmentType }}</td>
+                <td>{{ patient.service }}</td>
+                <td>{{ patient.authorizationNumber }}</td>
+                <td>{{ patient.imagePath }}</td>
+                <td>{{ patient.pathImageEPS }}</td>
+                <td>
+                    <a href="{{ path('app_patient_show', {'id': patient.id}) }}">show</a>
+                    <a href="{{ path('app_patient_edit', {'id': patient.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="26">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_patient_new') }}">Create new</a>
+{% endblock %}

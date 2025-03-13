@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Patient{% endblock %}
+
+{% block body %}
+    <h1>Patient</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ patient.id }}</td>
+            </tr>
+            <tr>
+                <th>DocumentType</th>
+                <td>{{ patient.documentType }}</td>
+            </tr>
+            <tr>
+                <th>Document</th>
+                <td>{{ patient.document }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ patient.firstName }}</td>
+            </tr>
+            <tr>
+                <th>SecondName</th>
+                <td>{{ patient.secondName }}</td>
+            </tr>
+            <tr>
+                <th>FirstLastName</th>
+                <td>{{ patient.firstLastName }}</td>
+            </tr>
+            <tr>
+                <th>SecondLastName</th>
+                <td>{{ patient.secondLastName }}</td>
+            </tr>
+            <tr>
+                <th>Birthday</th>
+                <td>{{ patient.birthday ? patient.birthday|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ patient.phone }}</td>
+            </tr>
+            <tr>
+                <th>SecondPhone</th>
+                <td>{{ patient.secondPhone }}</td>
+            </tr>
+            <tr>
+                <th>Department</th>
+                <td>{{ patient.department }}</td>
+            </tr>
+            <tr>
+                <th>Municipality</th>
+                <td>{{ patient.municipality }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ patient.address }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ patient.email }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ patient.gender }}</td>
+            </tr>
+            <tr>
+                <th>BloodGroup</th>
+                <td>{{ patient.bloodGroup }}</td>
+            </tr>
+            <tr>
+                <th>Rh</th>
+                <td>{{ patient.rh }}</td>
+            </tr>
+            <tr>
+                <th>ProcessType</th>
+                <td>{{ patient.processType }}</td>
+            </tr>
+            <tr>
+                <th>EntityHealth</th>
+                <td>{{ patient.entityHealth }}</td>
+            </tr>
+            <tr>
+                <th>Regime</th>
+                <td>{{ patient.regime }}</td>
+            </tr>
+            <tr>
+                <th>AppointmentType</th>
+                <td>{{ patient.appointmentType }}</td>
+            </tr>
+            <tr>
+                <th>Service</th>
+                <td>{{ patient.service }}</td>
+            </tr>
+            <tr>
+                <th>AuthorizationNumber</th>
+                <td>{{ patient.authorizationNumber }}</td>
+            </tr>
+            <tr>
+                <th>ImagePath</th>
+                <td>{{ patient.imagePath }}</td>
+            </tr>
+            <tr>
+                <th>PathImageEPS</th>
+                <td>{{ patient.pathImageEPS }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_patient_index') }}">back to list</a>
+
+    <a href="{{ path('app_patient_edit', {'id': patient.id}) }}">edit</a>
+
+    {{ include('patient/_delete_form.html.twig') }}
+{% endblock %}
