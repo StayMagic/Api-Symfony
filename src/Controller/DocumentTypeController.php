@@ -10,12 +10,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class DocumentTypeController extends AbstractController
 {
     #[Route('/api/patient/document-types', methods: ['GET'])]
-    public function getDocumentTypes(Connection $connection): JsonResponse
+    public function getDocumentTypesForSelect(Connection $connection): JsonResponse
     {
-        // Consulta SQL directa a la base de datos
-        $documentTypes = $connection->fetchAllAssociative("SELECT id, label, value FROM document_types");
+        // Consulta optimizada para select (value = código, label = nombre + descripción)
+        $documentTypes = $connection->fetchAllAssociative(
+            "SELECT 
+                code as value, 
+                CONCAT(name, ' - ', description) as label 
+             FROM document_type 
+             ORDER BY CAST(code AS INTEGER)"
+        );
 
         return $this->json($documentTypes);
     }
 }
-

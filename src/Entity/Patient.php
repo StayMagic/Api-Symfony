@@ -76,9 +76,6 @@ class Patient
     #[ORM\Column(name: 'regime', type: 'string', length: 50)]
     private string $regime;
 
-    #[ORM\Column(name: 'appointment_type', type: 'string', length: 50)]
-    private string $appointmentType;
-
     #[ORM\Column(name: 'service', type: 'string', length: 100)]
     private string $service;
 
@@ -145,8 +142,6 @@ class Patient
     public function setEntityHealth(string $entityHealth): void { $this->entityHealth = $entityHealth; }
     public function getRegime(): string { return $this->regime; }
     public function setRegime(string $regime): void { $this->regime = $regime; }
-    public function getAppointmentType(): string { return $this->appointmentType; }
-    public function setAppointmentType(string $appointmentType): void { $this->appointmentType = $appointmentType; }
     public function getService(): string { return $this->service; }
     public function setService(string $service): void { $this->service = $service; }
     public function getAuthorizationNumber(): ?string { return $this->authorizationNumber; }
